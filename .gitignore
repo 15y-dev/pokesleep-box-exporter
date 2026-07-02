@@ -1,0 +1,11 @@
+.venv/
+captures/
+downloads/
+__pycache__/
+*.pyc
+
+# アプリ由来のデータ（著作権保護）
+*.db
+pokemon_box_dump.json
+pokemon_box.csv
+pokemon_box_raw.csv
