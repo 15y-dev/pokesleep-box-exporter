@@ -91,7 +91,9 @@ python fetch_missing_tables.py
 
 ## HTMLビューア
 
-`pokemon_box_viewer.html` をブラウザで開き、CSVをドラッグ＆ドロップすると表形式で閲覧できます。
+📎 **GitHub Pages:** [https://15y-dev.github.io/pokesleep-box-exporter/](https://15y-dev.github.io/pokesleep-box-exporter/)
+
+`index.html` をブラウザで開き、CSVをドラッグ＆ドロップすると表形式で閲覧できます。
 
 - 列ソート（ヘッダークリック）
 - 列の表示/非表示切り替え（「📋 列の表示」ボタン）
@@ -121,7 +123,7 @@ pokemonsleep/
 ├── dump_pokemon_box.py       # メイン: Frida→DB→CSV
 ├── fetch_missing_tables.py   # 補助: 不足テーブル追加取得
 ├── pokemon_data.json         # マスターデータ定義（日本語名等）
-├── pokemon_box_viewer.html   # CSVビューア（HTML）
+├── index.html                # CSVビューア（HTML / GitHub Pages）
 ├── setup_android.py          # Android端末セットアップ
 ├── README_ja.md              # 日本語README
 ├── README.md                 # 英語README

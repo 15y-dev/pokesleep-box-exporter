@@ -65,7 +65,9 @@ Scans the master DB for additional tables and adds them to the existing dump.
 
 ## HTML Viewer
 
-Open `pokemon_box_viewer.html` in a browser and drag & drop the CSV file to view it as a table.
+📎 **GitHub Pages:** [https://15y-dev.github.io/pokesleep-box-exporter/](https://15y-dev.github.io/pokesleep-box-exporter/)
+
+Open `index.html` in a browser and drag & drop the CSV file to view it as a table.
 
 - Column sorting (click headers)
 - Show/hide columns ("📋 列の表示" button)
@@ -95,7 +97,7 @@ pokemonsleep/
 ├── dump_pokemon_box.py       # Main: Frida → DB → CSV
 ├── fetch_missing_tables.py   # Helper: fetch missing tables
 ├── pokemon_data.json         # Master data definitions (Japanese names etc.)
-├── pokemon_box_viewer.html   # CSV viewer (HTML)
+├── index.html                # CSV viewer (HTML / GitHub Pages)
 ├── setup_android.py          # Android device setup
 ├── README_ja.md              # Japanese README
 ├── README.md                 # English README
