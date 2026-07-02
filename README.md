@@ -71,6 +71,20 @@ Open `pokemon_box_viewer.html` in a browser and drag & drop the CSV file to view
 - Show/hide columns ("📋 列の表示" button)
 - Settings saved in localStorage
 
+### 📊 Daifuku Expected Value Checker Integration
+
+Auto-fill the [Pokemon Sleep Daifuku](https://www.pokemonsleepdaifuku.com/checker/expected/) expected value checker directly from the viewer.
+
+1. Click a row in the table to select a Pokemon
+2. Click the "📊 期待値チェック" button → JS code is copied to clipboard
+3. Open the Daifuku expected value checker page
+4. Paste into the URL bar → press `Enter` to execute
+
+> ⚠️ **Chrome note:** Chrome strips the `javascript:` prefix when pasting. Manually type `javascript:` at the beginning after pasting.
+
+- Pre-evolution Pokemon are automatically mapped to their final evolution (e.g., Bulbasaur → Venusaur)
+- Branching evolutions (e.g., Eevee) require manual Pokemon name selection
+
 ## File Structure
 
 ```

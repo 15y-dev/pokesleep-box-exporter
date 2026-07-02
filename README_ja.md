@@ -4,7 +4,7 @@
 
 ポケモンスリープのアプリ内DBからボックスのポケモン一覧を取得し、日本語CSVに出力するツールです。
 
-<img width="1823" height="975" alt="image" src="https://github.com/user-attachments/assets/629279b6-af10-4e7d-9954-58c849e99bea" />
+<img width="1823" height="975" alt="image" src="https://github.com/user-attachments/assets/710ee4a6-04b0-4e72-98b5-33ee1d62f45a" />
 
 ## 必要なもの
 
@@ -96,6 +96,20 @@ python fetch_missing_tables.py
 - 列ソート（ヘッダークリック）
 - 列の表示/非表示切り替え（「📋 列の表示」ボタン）
 - 設定はlocalStorageに保存
+
+### 📊 大福サイト期待値チェッカー連携
+
+ビューアから [ポケモンスリープ大福](https://www.pokemonsleepdaifuku.com/checker/expected/) の期待値チェッカーに自動入力できます。
+
+1. テーブルの行をクリックして選択
+2. 「📊 期待値チェック」ボタンをクリック → JSコードがクリップボードにコピーされます
+3. 大福サイトの期待値チェッカーを開く
+4. URLバー（アドレスバー）にペースト → `Enter` で実行
+
+> ⚠️ **Chrome注意:** URLバーにペーストすると先頭の `javascript:` が自動削除されます。ペースト後に `javascript:` を手入力してください。
+
+- 進化前のポケモンは自動的に最終進化形に変換されます（例: フシギダネ → フシギバナ）
+- イーブイ等の分岐進化は手動でポケモン名を選択してください
 
 ## ファイル構成
 
