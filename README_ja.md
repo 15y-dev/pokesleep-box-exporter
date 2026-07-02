@@ -4,6 +4,8 @@
 
 ポケモンスリープのアプリ内DBからボックスのポケモン一覧を取得し、日本語CSVに出力するツールです。
 
+<img width="1823" height="975" alt="image" src="https://github.com/user-attachments/assets/629279b6-af10-4e7d-9954-58c849e99bea" />
+
 ## 必要なもの
 
 - Windows PC
