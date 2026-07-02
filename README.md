@@ -71,13 +71,16 @@ Open `pokemon_box_viewer.html` in a browser and drag & drop the CSV file to view
 - Show/hide columns ("📋 列の表示" button)
 - Settings saved in localStorage
 
-### 📊 Daifuku Expected Value Checker Integration
+### 📊🔍 Daifuku Checker Integration
 
-Auto-fill the [Pokemon Sleep Daifuku](https://www.pokemonsleepdaifuku.com/checker/expected/) expected value checker directly from the viewer.
+Auto-fill the [Pokemon Sleep Daifuku](https://www.pokemonsleepdaifuku.com/) checkers directly from the viewer.
+
+- **📊 期待値** — [Expected Value Checker](https://www.pokemonsleepdaifuku.com/checker/expected/)
+- **🔍 個体値** — [IV Checker](https://www.pokemonsleepdaifuku.com/checker/)
 
 1. Click a row in the table to select a Pokemon
-2. Click the "📊 期待値チェック" button → JS code is copied to clipboard
-3. Open the Daifuku expected value checker page
+2. Click "📊 期待値" or "🔍 個体値" button → JS code is copied to clipboard
+3. Open the corresponding Daifuku checker page
 4. Paste into the URL bar → press `Enter` to execute
 
 > ⚠️ **Chrome note:** Chrome strips the `javascript:` prefix when pasting. Manually type `javascript:` at the beginning after pasting.

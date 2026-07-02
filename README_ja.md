@@ -97,13 +97,16 @@ python fetch_missing_tables.py
 - 列の表示/非表示切り替え（「📋 列の表示」ボタン）
 - 設定はlocalStorageに保存
 
-### 📊 大福サイト期待値チェッカー連携
+### 📊🔍 大福サイトチェッカー連携
 
-ビューアから [ポケモンスリープ大福](https://www.pokemonsleepdaifuku.com/checker/expected/) の期待値チェッカーに自動入力できます。
+ビューアから [ポケモンスリープ大福](https://www.pokemonsleepdaifuku.com/) のチェッカーに自動入力できます。
+
+- **📊 期待値** — [期待値チェッカー](https://www.pokemonsleepdaifuku.com/checker/expected/)
+- **🔍 個体値** — [個体値チェッカー](https://www.pokemonsleepdaifuku.com/checker/)
 
 1. テーブルの行をクリックして選択
-2. 「📊 期待値チェック」ボタンをクリック → JSコードがクリップボードにコピーされます
-3. 大福サイトの期待値チェッカーを開く
+2. 「📊 期待値」または「🔍 個体値」ボタンをクリック → JSコードがクリップボードにコピーされます
+3. 大福サイトの対応するチェッカーを開く
 4. URLバー（アドレスバー）にペースト → `Enter` で実行
 
 > ⚠️ **Chrome注意:** URLバーにペーストすると先頭の `javascript:` が自動削除されます。ペースト後に `javascript:` を手入力してください。

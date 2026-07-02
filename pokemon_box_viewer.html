@@ -35,7 +35,7 @@
     color: rgba(255,255,255,0.8);
     margin-left: auto;
   }
-  #col-toggle-btn, #daifuku-btn {
+  #col-toggle-btn, #daifuku-btn, #daifuku-iv-btn {
     background: rgba(255,255,255,0.2);
     border: 1px solid rgba(255,255,255,0.4);
     color: #fff;
@@ -45,8 +45,7 @@
     cursor: pointer;
     white-space: nowrap;
   }
-  #col-toggle-btn:hover, #daifuku-btn:hover { background: rgba(255,255,255,0.3); }
-  #daifuku-btn.copied { background: rgba(255,255,255,0.5); }
+  #col-toggle-btn:hover, #daifuku-btn:hover, #daifuku-iv-btn:hover { background: rgba(255,255,255,0.3); }
   #toast {
     position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
     background: #333; color: #fff; padding: 10px 24px; border-radius: 8px;
@@ -182,7 +181,8 @@
 <header>
   <h1>🌙 ポケモンスリープ ボックスビューア</h1>
   <button id="col-toggle-btn" style="display:none" onclick="toggleColPanel()">📋 列の表示</button>
-  <button id="daifuku-btn" style="display:none" onclick="copyDaifukuJS()">📊 期待値チェック</button>
+  <button id="daifuku-btn" style="display:none" onclick="copyDaifukuJS('expected')">📊 期待値</button>
+  <button id="daifuku-iv-btn" style="display:none" onclick="copyDaifukuJS('iv')">🔍 個体値</button>
   <span class="info" id="status-text">CSVファイルをドラッグ＆ドロップしてください</span>
 </header>
 <div id="col-panel">
@@ -205,12 +205,12 @@
 <div id="toast"></div>
 <div id="daifuku-modal" onclick="if(event.target===this)closeDaifukuModal()">
   <div class="modal-content">
-    <h3>📊 期待値チェッカー自動入力</h3>
+    <h3 id="daifuku-modal-title">📊 期待値チェッカー自動入力</h3>
     <div id="daifuku-pokemon-name" style="font-size:16px;font-weight:700;color:#e65100;margin-bottom:8px;"></div>
     <div class="steps">
       <b>コードをクリップボードにコピーしました ✅</b><br>
       次の手順で大福サイトに自動入力します：<br>
-      ① <a href="https://www.pokemonsleepdaifuku.com/checker/expected/" target="_blank">大福サイト期待値チェッカー</a> を開く<br>
+      ① <a id="daifuku-modal-link" href="https://www.pokemonsleepdaifuku.com/checker/expected/" target="_blank">大福サイトチェッカー</a> を開く<br>
       ② URLバー（アドレスバー）に <code>Ctrl+V</code> でペースト<br>
       ③ <code>Enter</code> で実行 → フォームが自動入力されます
     </div>
@@ -219,7 +219,7 @@
     </div>
     <div class="btn-row">
       <button class="btn-close" onclick="closeDaifukuModal()">閉じる</button>
-      <button class="btn-open" onclick="window.open('https://www.pokemonsleepdaifuku.com/checker/expected/','_blank')">🔗 大福サイトを開く</button>
+      <button class="btn-open" id="daifuku-modal-open-btn" onclick="window.open('https://www.pokemonsleepdaifuku.com/checker/expected/','_blank')">🔗 大福サイトを開く</button>
     </div>
   </div>
 </div>
@@ -577,7 +577,16 @@ function closeDaifukuModal() {
   document.getElementById('daifuku-modal').classList.remove('open');
 }
 
-function copyDaifukuJS() {
+const DAIFUKU_URLS = {
+  expected: 'https://www.pokemonsleepdaifuku.com/checker/expected/',
+  iv: 'https://www.pokemonsleepdaifuku.com/checker/',
+};
+const DAIFUKU_LABELS = {
+  expected: { icon: '📊', title: '期待値チェッカー自動入力', linkText: '大福サイト期待値チェッカー' },
+  iv: { icon: '🔍', title: '個体値チェッカー自動入力', linkText: '大福サイト個体値チェッカー' },
+};
+
+function copyDaifukuJS(mode) {
   const row = getSelectedRow();
   if (!row || !row['ポケモン名']) {
     showToast('⚠️ 行を選択してください');
@@ -586,21 +595,31 @@ function copyDaifukuJS() {
   const js = generateDaifukuJS(row);
   const origName = row['ポケモン名'];
   const finalName = DAIFUKU_EVOLUTION_MAP[origName] || origName;
+  const url = DAIFUKU_URLS[mode] || DAIFUKU_URLS.expected;
+  const lbl = DAIFUKU_LABELS[mode] || DAIFUKU_LABELS.expected;
+
   navigator.clipboard.writeText(js).then(() => {
     let label = `${origName} Lv.${row['Lv'] || '?'}`;
     if (finalName !== origName) {
       label += ` → ${finalName} として入力`;
     }
+    document.getElementById('daifuku-modal-title').textContent = `${lbl.icon} ${lbl.title}`;
     document.getElementById('daifuku-pokemon-name').textContent = label;
+    const link = document.getElementById('daifuku-modal-link');
+    link.href = url;
+    link.textContent = lbl.linkText;
+    const openBtn = document.getElementById('daifuku-modal-open-btn');
+    openBtn.onclick = () => window.open(url, '_blank');
     document.getElementById('daifuku-modal').classList.add('open');
   });
 }
 
-// Show daifuku button when table is loaded
+// Show daifuku buttons when table is loaded
 const origRenderTable = renderTable;
 renderTable = function(headers, data) {
   origRenderTable(headers, data);
   document.getElementById('daifuku-btn').style.display = '';
+  document.getElementById('daifuku-iv-btn').style.display = '';
 };
 </script>
 </body>
