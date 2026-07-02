@@ -4,6 +4,8 @@
 
 Extract your Pokemon Sleep box data from the in-app database and export it as a Japanese-localized CSV.
 
+<img width="1823" height="975" alt="image" src="https://github.com/user-attachments/assets/710ee4a6-04b0-4e72-98b5-33ee1d62f45a" />
+
 ## Requirements
 
 - Windows PC
